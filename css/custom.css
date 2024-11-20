@@ -1,4 +1,16 @@
+
+/* Importação de Fontes */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
+
+/* 
+Estilos Globais
+ Define estilos globais para todos os elementos:
+
+- Margem e preenchimento zero
+- Box-sizing como border-box
+- Texto sem decoração
+*/
+
 * {
     margin: 0;
     padding: 0;
@@ -6,96 +18,284 @@
     text-decoration: none;
 }
 
+
+/*
+Variáveis do CSS
+ Define variáveis CSS para cores principais do site.
+*/
 :root {
-    --main-color: #040714;
-    --site-color: #fff;
-    --active-color: #0063e5;
+    --main-color: #121463;
+    --site-color: #ffffff;
+    --active-color: #e5005f;
     --first-color: #08132f;
     --second-color: #090b13;
     --third-color: #1b202a;
+    --four-color: #0ff;
 }
 
+/* Estilos para o corpo da página */
 body {
-    background-color: var(--main-color);
-    color: var(--site-color);
-}
+    background-color: var(--main-color); /* Cor de fundo principal */
+    color: var(--site-color); /* Cor de texto principal */
+  }
+  
+  /* Estilos para o contêiner de largura máxima */
+  .max-width {
+    max-width: 1300px; /* Largura máxima */
+    padding: 0 10px; /* Preenchimento horizontal */
+    margin: auto; /* Margem automática para centralizar */
+  }
+  
+  /* Estilos para o logotipo da barra de navegação */
+  .navbar .logo a {
+    color: var(--active-color); /* Cor ativa */
+    font-size: 35px; /* Tamanho da fonte */
+    font-weight: 500; /* Peso da fonte */
+  }
 
-.max-width {
-    max-width: 1300px;
-    padding: 0 10px;
-    margin: auto;
-}
-
-.navbar .logo a {
-    color: var(--active-color);
-    font-size: 35px;
-    font-weight: 500;
-}
-
+/* Estilos para a barra de navegação */
 .navbar {
-    position: fixed;
-    width: 100%;
-    z-index: 999;
-    padding: 20px 0;
-    font-family: 'Ubuntu', sans-serif;
-    background-color: var(--main-color);
-    border-bottom: solid var(--third-color) 1px;
-}
+    position: fixed; /* Posição fixa na tela */
+    width: 100%; /* Largura total da tela */
+    z-index: 999; /* Índice z alto para sobrepor outros elementos */
+    padding: 20px 0; /* Preenchimento topo e inferior */
+    font-family: 'Ubuntu', sans-serif; /* Fonte Ubuntu */
+    background-color: var(--main-color); /* Cor de fundo principal */
+    border-bottom: solid var(--third-color) 1px; /* BordaNavegação */
+  }
+  
+  /* Estilos para o conteúdo da barra de navegação */
+  .navbar .max-width {
+    display: flex; /* Exibição flexível */
+    align-items: center; /* Alinhamento vertical central */
+    justify-content: space-between; /* Distribuição horizontal igual */
+  }
+  
+  /* Estilos para os itens do menu da barra de navegação */
+  .navbar .menu li {
+    list-style: none; /* Lista sem estilo */
+    display: inline-block; /* Exibição em linha */
+  }
+  
+  /* Estilos para os links dos itens do menu da barra de navegação */
+  .navbar .menu li a {
+    display: block; /* Exibição como bloco */
+    color: var(--site-color); /* Cor de texto principal */
+    font-size: 18px; /* Tamanho da fonte */
+    font-weight: 400; /* Peso da fonte */
+    margin-left: 25px; /* Margem esquerda */
+  }
 
-.navbar .max-width {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.navbar .menu li {
-    list-style: none;
-    display: inline-block;
-}
-
-.navbar .menu li a {
-    display: block;
-    color: var(--site-color);
-    font-size: 18px;
-    font-weight: 400;
-    margin-left: 25px;
-}
-
+/* Estilos para o botão de menu */
 .menu-btn {
-    color: var(--site-color);
-    font-size: 23px;
-    cursor: pointer;
-    display: none;
+    color: var(--site-color); /* Cor de texto principal */
+    font-size: 23px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor como ponteiro */
+    display: none; /* Exibição none por padrão */
+  }
+  
+  /* Média queries para telas menores que 947px */
+  @media (max-width: 947px) {
+    /* Altera estilos do botão de menu para telas menores */
+    .menu-btn {
+      display: block; /* Exibição como bloco */
+      z-index: 999; /* Índice z alto para sobrepor outros elementos */
+    }
+  
+    /* Estilos para o ícone de menu ativo */
+    #menu-icon.active::before {
+      content: "\f00d"; /* Conteúdo do ícone (fonte: Font Awesome) */
+    }
+  
+    /* Estilos para o menu da barra de navegação em telas menores */
+    .navbar .menu {
+      background-color: var(--main-color); /* Cor de fundo principal */
+      position: fixed; /* Posição fixa */
+      height: 100vh; /* Altura total */
+      width: 100%; /* Largura total */
+      left: -100%; /* Posição esquerda inicial (fora da tela) */
+      top: 0; /* Posição topo */
+      text-align: center; /* Alinhamento de texto */
+      padding-top: 80px; /* Preenchimento topo */
+      transition: all 0.3s ease; /* Transição suave */
+    }
+  
+    /* Estilos para o menu ativo */
+    #menu-site.active {
+      left: 0; /* Posição esquerda quando ativo (dentro da tela) */
+    }
+  
+    /* Estilos para os itens do menu em telas menores */
+    .navbar .menu li {
+      display: block; /* Exibição como bloco */
+    }
+  
+    /* Estilos para os links dos itens do menu em telas menores */
+    .navbar .menu li a {
+      display: inline-block; /* Exibição em linha */
+      margin: 13px 0; /* Margem */
+      font-size: 25px; /* Tamanho da fonte */
+    }
+  }
+
+/* Estilos para as seções */
+section {
+    padding: 50px 0; /* Preenchimento vertical */
+  }
+  
+  /* Média queries para telas com largura mínima de 690px */
+  @media (min-width: 690px) {
+    section {
+      padding: 20px 0; /* Preenchimento vertical reduzido */
+    }
+  }
+  
+  /* Estilos para a seção topo */
+  .top {
+    color: var(--site-color); /* Cor de texto principal */
+    display: flex; /* Exibição flexível */
+    background: url("https://wallpapers.com/images/hd/1920x1080-pictures-zog2vma3qpmt2o9l.jpg") no-repeat center; /* Imagem de fundo */
+    height: 100vh; /* Altura total da tela */
+    min-height: 500px; /* Altura mínima */
+    background-size: cover; /* Tamanho de fundo */
+    background-attachment: fixed; /* Acessório de fundo fixo */
+    font-family: 'ubuntu', sans-serif; /* Fonte Ubuntu */
+  }
+  
+  /* Estilos para o contêiner de largura máxima dentro da seção topo */
+  .top .max-width {
+    width: 100%; /* Largura total */
+    display: flex; /* Exibição flexível */
+  }
+  
+  /* Estilos para os textos dentro da seção topo */
+  .top .top-content .text-1 {
+    font-size: 25px; /* Tamanho da fonte */
+  }
+  
+  .top .top-content .text-2 {
+    font-size: 55px; /* Tamanho da fonte */
+    font-weight: 400; /* Peso da fonte */
+    margin-left: -3px; /* Margem esquerda */
+  }
+  
+  .top .top-content .text-3 {
+    font-size: 32px; /* Tamanho da fonte */
+    margin: 5px 0; /* Margem vertical */
+  }
+  
+  /* Estilos para o botão dentro da seção topo */
+  .top .top-content a {
+    display: inline-block; /* Exibição em linha */
+    background: var(--active-color); /* Cor de fundo ativa */
+    color: var(--site-color); /* Cor de texto principal */
+    font-size: 25px; /* Tamanho da fonte */
+    padding: 12px 36px; /* Preenchimento */
+    margin-top: 20px; /* Margem superior */
+    font-weight: 300; /* Peso da fonte */
+    border-radius: 10px; /* BordaNavegação arredondada */
+    border: 2px solid var(--active-color); /* BordaNavegação */
+    transition: all 0.3s ease; /* Transição suave */
+  }
+
+/* Estilos para o botão da seção topo em hover */
+.top .top-content a:hover {
+color: var(--four-color); /* Cor de texto ao passar o mouse */
+background: none; /* Fundo transparente ao passar o mouse */
 }
 
-@media (max-width: 947px) {
-    .menu-btn {
-        display: block;
-        z-index: 999;
-    }
-    #menu-icon.active::before {
-        content: "\f00d";
-    }
-    .navbar .menu {
-        background-color: var(--main-color);
-        position: fixed;
-        height: 100vh;
-        width: 100%;
-        left: -100%;
-        top: 0;
-        text-align: center;
-        padding-top: 80px;
-        transition: all 0.3s ease;
-    }
-    #menu-site.active {
-        left: 0;
-    }
-    .navbar .menu li {
-        display: block;
-    }
-    .navbar .menu li a {
-        display: inline-block;
-        margin: 13px 0;
-        font-size: 25px;
-    }
+/* Estilos para a seção de serviços */
+.services {
+color: var(--site-color); /* Cor de texto principal */
+background-color: var(--main-color); /* Cor de fundo principal */
+font-family: 'poppins', serif; /* Fonte Poppins */
+margin: 60px; /* Margem externa */
 }
+
+/* Estilos para o título da seção de serviços */
+.services .title {
+text-align: center; /* Alinhamento de texto central */
+margin: 40px 0; /* Margem vertical */
+font-weight: 400; /* Peso da fonte */
+font-size: 35px; /* Tamanho da fonte */
+}
+
+/* Estilos para o conteúdo da seção de serviços */
+.services .serv-content {
+display: flex; /* Exibição flexível */
+flex-wrap: wrap; /* Quebra de linha */
+align-items: center; /* Alinhamento vertical central */
+justify-content: space-between; /* Distribuição horizontal igual */
+}
+
+/* Estilos para os cartões da seção de serviços */
+.services .serv-content .card {
+width: calc(33% - 20px); /* Largura do cartão */
+background: var(--first-color); /* Cor de fundo do cartão */
+text-align: center; /* Alinhamento de texto central */
+border-radius: 6px; /* BordaNavegação arredondada */
+padding: 50px 25px; /* Preenchimento */
+cursor: pointer; /* Cursor como ponteiro */
+transition: all 0.3s ease; /* Transição suave */
+}
+
+/* Estilos para os cartões da seção de serviços em hover */
+.services .serv-content .card:hover {
+background-color: var(--active-color); /* Cor de fundo ativa ao passar o mouse */
+}
+
+/* Estilos para os ícones dos cartões da seção de serviços */
+.services .serv-content .card i {
+font-size: 50px; /* Tamanho da fonte do ícone */
+color: var(--active-color); /* Cor do ícone */
+transition: all 0.3s ease; /* Transição suave */
+}
+
+/* Estilos para os ícones dos cartões da seção de serviços em hover */
+.services .serv-content .card:hover i {
+color: var(--four-color); /* Cor do ícone ao passar o mouse */
+}
+
+/* Estilos para o conteúdo do cartão */
+.services .serv-content .card .box {
+/* Transição suave para efeitos */
+transition: all 0.3s ease;
+}
+
+/* Estilos para o conteúdo do cartão em hover */
+.services .serv-content .card:hover .box {
+/* Aumenta o tamanho do conteúdo em 5% ao passar o mouse */
+transform: scale(1.05);
+}
+
+/* Estilos para o texto do cartão */
+.services .serv-content .card .text {
+/* Tamanho da fonte */
+font-size: 25px;
+/* Peso da fonte */
+font-weight: 500;
+/* Margem vertical */
+margin: 10px 0 7px 0;
+}
+
+/* Média queries para telas menores que 947px */
+@media (max-width: 947px) {
+/* Ajusta o tamanho e margem dos cartões */
+.services .serv-content .card {
+/* Largura do cartão */
+width: calc(50% - 10px);
+/* Margem inferior */
+margin-bottom: 20px;
+}
+}
+
+/* Média queries para telas menores que 690px */
+@media (max-width: 690px) {
+/* Ajusta o tamanho dos cartões */
+.services .serv-content .card {
+/* Largura do cartão */
+width: 100%;
+}
+}
+
+
